@@ -214,10 +214,23 @@ data1 = data1[~data1['subclass'].isin([16])]
 data1.to_csv(r"C:\Users\dell\Desktop\daylife\CSVread\data_set\df_new_lung_data.csv")
 
 
-使用list添加数据的方法：
+##使用list添加数据的方法：
 for i in range(100):
     list+=i
     
 for i in range(100):
     list.append([i])
+    
+##使用numpy创建一个空数组
+a = numpy.zeros(shape= (5,2))
+
+##将array转换成list类型
+u = array([[1,2],[2,3]])
+m = u.tolist()
+
+
+
+
+
+
     
