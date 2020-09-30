@@ -1,0 +1,85 @@
+#for实现输出字符串中的每个字符
+string = 'asdfgh'
+for i in string:
+    print(i)
+
+#for实现10-30，步长为3的等差数列
+for i in range(10,30,3):
+    print(i)
+
+#for乘法口诀
+for i in range(1,10):
+    for j in range(1,10):
+        if j<=i:
+            print(j,'*',i ,'=',i*j,end =' ')
+    print('\n')
+
+#while累加list表中的元素
+lst = [1,2,3,4,5]
+m = 0
+i = 0
+while i <=len(lst):
+    m = m+i
+    i = i+1
+print(m)
+
+#while乘法口诀
+i = j = 1
+while i <10:
+    while j<10:
+        if j<=i:
+            print(j,'*',i ,'=',i*j,end =' ')
+        j+=1
+    j=1
+    i+=1
+    print('\n')
+        
+#while迭代法求根,精度为1e-8
+x=2
+r0 = x
+r1 = (r0+x/r0)/2
+while  abs(r0-r1)>1e-6:
+    r0=r1
+    r1 = (r0+x/r0)/2
+print(r1)
+
+
+x= 2
+r0=x
+while abs(r0*r0-x)>1e-6:
+    r0 = (r0+x/r0)/2
+print(r0)
+
+
+#函数的形式
+def sqrt(x):
+    y = x
+    while abs(y*y-x)>1e-6:
+        y = (y+x/y)/2
+    return y
+print(sqrt(2))
+
+#编程根据公式计算pi，精度为1e-7
+n = 1
+y = 1
+pi = 0
+psum = 1
+while abs(y)>1e-7:
+    y = ((-1)**(n))/(2*n+1)
+    psum +=y
+    n+=1
+pi = 4*psum
+print(pi)
+
+
+
+
+#输入自然数判断是否为素数
+data = int(input("请输入一个整数:",))
+for i in range(2,data):
+    if data%i==0:
+        print(data,'不是素数')
+        break
+    else:
+        print(data,"是素数")
+        break
