@@ -229,7 +229,15 @@ u = array([[1,2],[2,3]])
 m = u.tolist()
 
 
+#空缺值处理
+log_data.isnull()
+log_data[log_data['volumns'].notnull()]
+log_data.fillna(0)
 
+
+log_data.dropna()
+log_data.dropna(axis=1)
+log_data.dropna(subset=[])
 
 
 
