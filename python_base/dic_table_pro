@@ -1,0 +1,57 @@
+#字典和表的操作
+import pandas as pd
+#生成dataframe
+df1 = {'col1':[1,2],'col2':[3,4]}
+df1 = pd.DataFrame(df1,index = ["row1","row2"]) 
+df1
+
+import numpy as np
+d2 = np.random.randint(0,10,(5,5))
+df2 = pd.DataFrame(d2,columns = ['a','b','c','d','e'])
+df2.index = ['A','B','C','D','E']
+df2
+
+
+std1 = {'Name': 'std1',
+        'English': 85,
+        'Math': 74}
+
+std2 = pd.Series({'Name': 'std2',
+                   'English': 90,
+                   'Math': 88})
+
+std3 = pd.Series({'Name': 'std3',
+                   'English': 78,
+                   'Math': 50})
+print(std1)
+print(std2)
+df = pd.DataFrame(data=[std1,std2,std3],index=['a','b','c'])
+print(df)
+
+df['chinese']=[90,90,89]
+df
+
+in_row = pd.DataFrame([['std4',87,87,98]],columns=['Name','Math','English','chinese'])
+df=df.append(in_row,ignore_index=True)
+df
+df.index = ["a","b","c","d"]
+print(df.loc['a'])
+print(df.iloc[0])
+
+print(df[['Name',"Math"]])
+
+df["Rank"] = [1,2,3,4]
+df
+
+ranks = df["Rank"].copy()
+ranks +=2
+print(ranks)
+df
+
+print(df.drop(['d']))
+print(df)
+
+print(df.drop(["Rank"],axis=1))
+print(df)
+del df['chinese']
+df
