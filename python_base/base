@@ -1,0 +1,69 @@
+classes = np.unique(label)#去重
+
+计时
+time_start=time.time()
+time_end = time.time()
+print('totally cost',time_end-time_start)
+
+生成空dataframe
+m = pd.DataFrame()
+
+生成一列全是0的array：
+m = np.zeros((4500,0))
+
+
+合并两个dataframe
+axis=1为列合并，列增加 axis=0为行合并，行增加
+concat([df1,df2],axis=1)
+
+
+np.sign是将函数的符号析离出来
+
+
+numpy的argmax，将数组中的最大值得索引返回出来
+
+对缺失值的处理：
+df.isnull()#是缺失值返回True，否则范围False
+df.isnull().sum()#返回每列包含的缺失值的个数
+df.dropna()#直接删除含有缺失值的行
+df.dropna(axis = 1)#直接删除含有缺失值的列
+df.dropna(how = 'all')#只删除全是缺失值的行
+df.dropna(thresh = 4)#保留至少有4个缺失值的行
+df.dropna(subset = ['C'])#删除含有缺失值的特定的列
+dddf = ddf.dropna(subset=['jie_num'],axis=0)#删除含有缺失值的特定的行
+
+计数类别：
+llabel['label'].value_counts()#计算各类别数量
+
+绘制箱线图
+x = ddf['label']
+plt.boxplot(x)    				#垂直显示箱线图
+plt.show()						#显示该图
+plt.boxplot(x,vert = False)    		#水平显示箱线图
+plt.show()							#显示该图
+ddf.boxplot()##画Dataframe数据的每一列的箱线图
+plt.show()
+
+plt.boxplot(x=dt.values,labels=dt.columns,whis=1.5) #columns列索引，values所有数值
+plt.show()
+
+#将数据转换成数值类型
+x = pd.to_numeric(ddf['finance'])
+
+XGboost: https://blog.csdn.net/a1b2c3d4123456/article/details/52849091
+CNN: https://blog.csdn.net/woaijssss/article/details/79535052
+输入层: 去均值、归一化、PCA/SVD降维等
+卷积层: 权值共享
+激活层: 
+首先ReLU，因为迭代速度快，但是有可能效果不加。如果ReLU失效的情况下，考虑使用Leaky ReLU或者Maxout，此时一般情况都可以解决。Tanh函数在文本和音频处理有比较好的效果。
+池化层: 欠采样或下采样，主要用于特征降维   最大池化、平均池化
+全连接FC层: Softmax输出
+可以引入dropout操作，来随机删除神经网络中的部分神经元，来解决此问题。还可以进行局部归一化（LRN）、数据增强等操作，来增加鲁棒性。当来到了全连接层之后，可以理解为一个简单的多分类神经网络（如：BP神经网络），通过softmax函数得到最终的输出。整个模型训练完毕
+
+https://campoo.cc/cnn/
+
+
+医疗运作管理：https://www.zhihu.com/question/318235131/answer/637429075
+
+python扩展包：https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
