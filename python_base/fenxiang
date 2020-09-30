@@ -1,0 +1,16 @@
+#分箱
+import pandas as pd
+scores = [87,79,56,90,93,69,77,85,89,98]
+bins = [0,60,90,100] #分箱边界
+levels = pd.cut(scores,bins)
+print(levels)
+print(levels.codes)
+
+pd.value_counts(levels)
+
+group = ["bad","medium","good"]
+levels_name = pd.cut(scores,bins,labels=group)
+
+df = pd.DataFrame(scores,columns=["score"])
+df['class'] = levels_name
+df
